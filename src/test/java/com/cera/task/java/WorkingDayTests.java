@@ -27,11 +27,11 @@ public class WorkingDayTests {
             getForEntity("http://localhost:" + port + "/carer?date=2021-11-07", String.class);
 
         try {
-            assertThat(response.getStatusCodeValue()).isEqualTo(200);
+            assertThat(response.getStatusCodeValue()).isEqualTo(200);//not string  it must be integer
         } catch (Exception e) {
             throw new Exception("HTTP not OK" + e);
         }
-        assertThat(response.getBody()).isEqualTo("{\"workingDay\":false}");
+        assertThat(response.getBody()).isEqualTo("{\"workingDay\":false}");//changed the true to false to verify the date that is not a working day
 	}
 
     // Add Negative Test
@@ -40,7 +40,7 @@ public class WorkingDayTests {
 			 getForEntity("http://localhost:" + port + "/carer?date=2021-11-07", String.class);
 
 		 try {
-			 assertThat(response.getStatusCodeValue()).isEqualTo(200);
+			 assertThat(response.getStatusCodeValue()).isEqualTo(200);//not string  it must be integer
 		 } catch (Exception e) {
 			 throw new Exception("HTTP not OK" + e);
 		 }
