@@ -27,15 +27,23 @@ public class WorkingDayTests {
             getForEntity("http://localhost:" + port + "/carer?date=2021-11-07", String.class);
 
         try {
-            assertThat(response.getStatusCode()).isEqualTo("200");
+            assertThat(response.getStatusCodeValue()).isEqualTo(200);
         } catch (Exception e) {
             throw new Exception("HTTP not OK" + e);
         }
-        assertThat(response.getBody()).isEqualTo("{\"workingDay\":true}");
+        assertThat(response.getBody()).isEqualTo("{\"workingDay\":false}");
 	}
 
     // Add Negative Test
-    // @Test
-    // public void negativeTest() throws Exception {}
+     @Test
+     public void negativeTest() throws Exception {ResponseEntity<String> response = this.restTemplate.
+			 getForEntity("http://localhost:" + port + "/carer?date=2021-11-07", String.class);
+
+		 try {
+			 assertThat(response.getStatusCodeValue()).isEqualTo(200);
+		 } catch (Exception e) {
+			 throw new Exception("HTTP not OK" + e);
+		 }
+		 assertThat(response.getBody()).isNotEqualTo("{\"workingDay\":true}");}
 
 }
