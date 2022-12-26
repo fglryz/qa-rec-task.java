@@ -21,7 +21,9 @@ public class CarerController {
 	public Response Sample(@RequestParam(value = "date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date) {
 		Response response = new Response();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE");
-        var workingday = Arrays.asList(WorkingDays).contains(date.format(format));
+		//I assigned a default value to workdays= false in CarerController to see if the given date is not inside working days
+		boolean workingday=false;
+        workingday = Arrays.asList(WorkingDays).contains(date.format(format));
 		response.setWorkingDay(workingday);
 		return response;
 	}
