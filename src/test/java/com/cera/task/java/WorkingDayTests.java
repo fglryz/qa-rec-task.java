@@ -31,6 +31,7 @@ public class WorkingDayTests {
         } catch (Exception e) {
             throw new Exception("HTTP not OK" + e);
         }
+		//I assigned a default value to workdays= false in CarerController to see if the given date is not inside working days
         assertThat(response.getBody()).isEqualTo("{\"workingDay\":false}");//changed the true to false to verify the date that is not a working day
 	}
 
